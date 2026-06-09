@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>이력서 · Resume — 이정우 (Jeongwoo Lee)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.min.css">
+<style>
+  :root{
+    --ink:#16202b;--sub:#3e4c59;--mut:#7b8794;--line:#e2e8ee;
+    --ac:#0e7490;--ac2:#1fa4b6;--acbd:#7fc6d8;--acbg:#e9f7fb;
+    --grad:linear-gradient(90deg,#0e7490,#1fa4b6);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{margin:0;}
+  body{font-family:"Pretendard",-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif;color:var(--ink);line-height:1.55;font-size:14px;
+    background:radial-gradient(1100px 560px at 50% -240px,#dcedf2 0%,#eaeff4 42%,#e6ebf1 100%);min-height:100vh;}
+  a{color:var(--ac);text-decoration:none;}
+  .sheet{position:relative;max-width:840px;margin:26px auto;background:#fff;padding:42px 48px 50px;border-radius:16px;
+    box-shadow:0 1px 2px rgba(15,30,50,.06),0 18px 50px rgba(15,30,50,.14);overflow:hidden;}
+  .sheet::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:var(--grad);}
+  /* language toggle */
+  .lang-ko .en{display:none !important;}
+  .lang-en .ko{display:none !important;}
+  /* toolbar */
+  .toolbar{position:fixed;top:16px;right:18px;z-index:60;display:flex;gap:8px;}
+  .toolbar .tb{font-size:12.5px;font-weight:700;padding:8px 15px;border-radius:999px;border:1px solid var(--ac);background:rgba(255,255,255,.92);color:var(--ac);cursor:pointer;backdrop-filter:blur(6px);box-shadow:0 3px 12px rgba(15,30,50,.16);transition:.16s;}
+  .toolbar .tb:hover{background:var(--ac);color:#fff;transform:translateY(-1px);}
+  /* side timeline index */
+  .sidenav{position:fixed;top:50%;left:max(20px,calc(50% - 562px));transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;}
+  .sidenav::before{content:"";position:absolute;left:5px;top:20px;bottom:20px;width:2px;background:linear-gradient(180deg,transparent,var(--line) 12%,var(--line) 88%,transparent);}
+  .snav{display:flex;align-items:center;gap:12px;padding:8px 0;position:relative;text-decoration:none;}
+  .snav .dot{width:12px;height:12px;border-radius:50%;background:#fff;border:2px solid #c4d0da;flex:none;z-index:1;transition:.2s;}
+  .snav .lbl{font-size:12px;font-weight:600;color:var(--mut);opacity:.85;white-space:nowrap;transition:.2s;}
+  .snav:hover .dot{border-color:var(--ac2);transform:scale(1.12);}
+  .snav:hover .lbl{color:var(--ink);opacity:1;}
+  .snav.active .dot{border-color:var(--ac);background:var(--ac);box-shadow:0 0 0 4px var(--acbg);}
+  .snav.active .lbl{color:var(--ac);font-weight:800;opacity:1;}
+  /* header */
+  header{border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:6px;}
+  .hwrap{display:flex;justify-content:space-between;align-items:center;gap:24px;}
+  .name{font-size:31px;font-weight:800;letter-spacing:-.015em;margin:0;line-height:1.1;}
+  .name small{font-size:15px;font-weight:600;color:var(--mut);margin-left:9px;letter-spacing:0;}
+  .role{font-size:14.5px;font-weight:700;margin:6px 0 12px;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;display:inline-block;}
+  .contact{font-size:12.5px;color:var(--sub);display:flex;flex-wrap:wrap;gap:7px 16px;}
+  .contact span{display:inline-flex;align-items:center;gap:5px;}
+  .contact b{color:var(--ac);font-weight:700;}
+  .avatar{width:108px;height:134px;object-fit:cover;border-radius:12px;border:3px solid #fff;outline:1px solid var(--line);box-shadow:0 8px 24px rgba(15,30,50,.22);flex:none;cursor:zoom-in;transition:transform .2s, box-shadow .2s;}
+  .avatar:hover{transform:scale(1.03) rotate(-.6deg);box-shadow:0 12px 30px rgba(14,116,144,.3);}
+  /* section headers */
+  h2{font-size:12.5px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--ac);margin:26px 0 12px;display:flex;align-items:center;gap:12px;scroll-margin-top:22px;}
+  h2::before{content:"";width:18px;height:3px;border-radius:3px;background:var(--grad);flex:none;}
+  h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(14,116,144,.28),transparent);}
+  p{margin:6px 0;}
+  .summary{font-size:13.5px;color:var(--sub);line-height:1.62;}
+  /* skills */
+  .skillgrid{display:flex;flex-direction:column;gap:8px;}
+  .srow{display:grid;grid-template-columns:132px 1fr;gap:12px;align-items:start;}
+  .srow .k{font-weight:700;color:var(--ink);font-size:13px;padding-top:3px;}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;}
+  .chips span{font-size:11.5px;background:linear-gradient(180deg,#f4f8fb,#e9eff4);border:1px solid #d9e3ea;border-radius:999px;padding:3px 11px;color:var(--sub);transition:.15s;cursor:default;}
+  .chips span:hover{background:linear-gradient(180deg,var(--acbg),#d6eef4);border-color:var(--ac);color:var(--ac);transform:translateY(-1px);box-shadow:0 4px 10px rgba(14,116,144,.16);}
+  /* projects */
+  .proj{display:flex;gap:18px;align-items:flex-start;margin:13px 0;padding:15px 18px;background:#fff;border:1px solid var(--line);border-radius:14px;break-inside:avoid;
+    transition:transform .18s, box-shadow .18s, border-color .18s;}
+  .proj:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(14,116,144,.14);border-color:var(--acbd);}
+  .pmain{flex:1;min-width:0;}
+  .pthumb{width:154px;flex:none;margin-top:2px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 4px 12px rgba(15,30,50,.08);}
+  .pthumb img{width:100%;display:block;cursor:zoom-in;transition:transform .3s;}
+  .pthumb:hover img{transform:scale(1.07);}
+  .pthumb figcaption{font-size:9.5px;color:var(--mut);padding:5px 7px;text-align:center;border-top:1px solid var(--line);background:#fafbfc;}
+  .ph{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .pt{font-size:15px;font-weight:800;}
+  .pt .tag{font-size:10.5px;font-weight:700;color:#fff;background:var(--grad);padding:2px 9px;border-radius:999px;margin-left:8px;vertical-align:middle;letter-spacing:.02em;}
+  .per{font-size:12px;color:var(--mut);font-weight:600;}
+  .one{font-size:12.5px;color:var(--sub);font-style:italic;margin:3px 0 6px;}
+  ul{margin:5px 0;padding-left:18px;}
+  li{margin:3px 0;font-size:13px;color:var(--sub);}
+  li::marker{color:var(--ac2);}
+  li b{color:var(--ink);}
+  .tech{font-size:11.5px;color:var(--mut);margin-top:5px;padding-top:5px;border-top:1px dashed var(--line);}
+  .tech b{color:var(--ac);}
+  .entry{margin:9px 0;break-inside:avoid;}
+  .entry .et{font-weight:800;font-size:14px;}
+  .entry .ed{font-size:12px;color:var(--mut);font-weight:600;}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px 26px;}
+  .two .entry{padding:12px 15px;background:linear-gradient(180deg,#fbfdfe,#f5f9fb);border:1px solid var(--line);border-radius:12px;margin:0;}
+  .pers p{font-size:13px;color:var(--sub);line-height:1.62;}
+  .pers .lab{font-weight:800;color:var(--ac);}
+  /* lightbox */
+  .lb{position:fixed;inset:0;z-index:100;background:rgba(8,14,26,.93);display:flex;align-items:center;justify-content:center;padding:30px;cursor:zoom-out;}
+  .lb[hidden]{display:none;}
+  .lb img{max-width:92vw;max-height:92vh;border-radius:12px;box-shadow:0 24px 70px rgba(0,0,0,.6);}
+  .lb .hint{position:fixed;bottom:18px;left:0;right:0;text-align:center;color:#9fb0c6;font-size:12px;pointer-events:none;}
+  /* reveal */
+  .js .reveal{opacity:0;transform:translateY(12px);transition:opacity .55s ease, transform .55s ease;}
+  .js .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} .js .reveal{opacity:1;transform:none;transition:none;} }
+  @media(max-width:1180px){ .sidenav{display:none;} }
+  @media(max-width:560px){ .hwrap{flex-direction:column-reverse;align-items:flex-start;} .proj{flex-direction:column;} .pthumb{width:220px;} .srow{grid-template-columns:1fr;} .two{grid-template-columns:1fr;} }
+  @media print{
+    @page{size:A4;margin:13mm;}
+    html,body{background:#fff;}
+    .sheet{box-shadow:none;margin:0;max-width:none;padding:0;border-radius:0;}
+    .sheet::before{display:none;}
+    .no-print{display:none!important;}
+    .proj,.entry,h2{break-inside:avoid;transform:none!important;box-shadow:none!important;}
+    .two .entry{background:#fff;}
+    .js .reveal{opacity:1!important;transform:none!important;}
+    a{color:var(--ink);}
+  }
+</style>
+</head>
+<body class="lang-ko">
+<script>document.documentElement.classList.add('js');</script>
+
+<div class="toolbar no-print">
+  <button class="tb" id="langbtn">English</button>
+  <button class="tb" onclick="window.print()">🖨 PDF</button>
+</div>
+
+<nav class="sidenav no-print" aria-label="sections">
+  <a class="snav" href="#sec-summary"><i class="dot"></i><span class="lbl"><span class="ko">자기소개</span><span class="en">Profile</span></span></a>
+  <a class="snav" href="#sec-skills"><i class="dot"></i><span class="lbl"><span class="ko">핵심 기술</span><span class="en">Skills</span></span></a>
+  <a class="snav" href="#sec-projects"><i class="dot"></i><span class="lbl"><span class="ko">프로젝트</span><span class="en">Projects</span></span></a>
+  <a class="snav" href="#sec-education"><i class="dot"></i><span class="lbl"><span class="ko">학력</span><span class="en">Education</span></span></a>
+  <a class="snav" href="#sec-about"><i class="dot"></i><span class="lbl"><span class="ko">지원 동기</span><span class="en">Motivation</span></span></a>
+</nav>
+
+<div class="sheet">
+
+<header class="reveal">
+  <div class="hwrap">
+    <div class="hleft">
+      <p class="name"><span class="ko">이정우 <small>Jeongwoo “Joey” Lee</small></span><span class="en">Jeongwoo “Joey” Lee <small>이정우</small></span></p>
+      <p class="role"><span class="ko">Physical AI · 로봇 소프트웨어 엔지니어</span><span class="en">Physical AI · Robotics Software Engineer</span></p>
+      <div class="contact">
+        <span><b>✉</b> jwlee8403@gmail.com</span>
+        <span><b>☎</b> +82-10-9989-8403</span>
+        <span><b>in</b> <a href="https://www.linkedin.com/in/jeongwoolee970515/" target="_blank" rel="noopener noreferrer">jeongwoolee970515</a></span>
+        <span><b>◆</b> <a href="https://joeyleeportfolio.netlify.app/" target="_blank" rel="noopener noreferrer">Physical AI Portfolio</a></span>
+        <span><b>◇</b> <a href="https://joeyjeongwooleeportfolio.netlify.app/" target="_blank" rel="noopener noreferrer">Game Development Portfolio</a></span>
+        <span><b>⌥</b> <a href="https://github.com/joey114132" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="https://github.com/addinedu-physicalai-1st" target="_blank" rel="noopener noreferrer"><span class="ko">팀 org</span><span class="en">team org</span></a></span>
+      </div>
+    </div>
+    <img class="avatar" src="resume_assets/profile_id.jpg" alt="이정우 · Jeongwoo Lee" data-zoom>
+  </div>
+</header>
+
+<h2 id="sec-summary" class="reveal"><span class="ko">자기소개</span><span class="en">Profile</span></h2>
+<p class="summary reveal">
+  <span class="ko">Utah 대학교 <b>Games 학사(Magna Cum Laude, 2024)</b>를 마친 뒤 <b>Physical AI·로보틱스</b>로 영역을 확장해 온 엔지니어입니다. 게임·3D에서 쌓은 <b>공간 감각과 실시간 렌더링 경험</b>을 <b>MuJoCo 디지털 트윈·three.js·비전(MediaPipe·YOLO)</b> 기반의 물리 시스템 구현에 연결하고 있습니다. Addinedu Physical AI 1기에서 <b>Gesto → 주차 IoT → ShopPinkki → pingdergarten(EduPing)</b> 네 차례의 팀 프로젝트를 수행하였으며, 매번 <b>데스크톱/브라우저 UI·비전 파이프라인·로봇 연동</b> 구간을 맡아 팀 통합을 이끌었습니다. <b>인식–제어–UI를 한 흐름으로 잇는 end-to-end 구현</b>과 ‘시뮬·벤치마크로 먼저 검증한 뒤 실물에 올리는’ 방식에 강점을 보유하고 있습니다. 상세 역할·데모·팀 발표 자료는 <b><a href="https://joeyleeportfolio.netlify.app/" target="_blank" rel="noopener noreferrer">Physical AI Portfolio</a></b>에 정리하였고, 게임·3D 작업은 <a href="https://joeyjeongwooleeportfolio.netlify.app/" target="_blank" rel="noopener noreferrer">Game Development Portfolio</a>에서 확인하실 수 있습니다.</span>
+  <span class="en">After a <b>B.S. in Games (Magna Cum Laude, Utah, 2024)</b>, I expanded into <b>Physical AI and robotics</b>. I connect spatial intuition and <b>real-time 3D</b> from games to systems that <b>perceive and act in the physical world</b> — <b>MuJoCo digital twins</b>, <b>browser 3D (three.js)</b>, and <b>vision (MediaPipe, YOLO)</b>. In Addinedu Physical AI cohort 1 I shipped four team projects — <b>Gesto → parking IoT → ShopPinkki → pingdergarten (EduPing)</b> — each time owning the <b>desktop/browser UI, vision pipeline, and robot integration</b> layer for the team. I’m strongest at <b>end-to-end builds that connect perception → control → UI</b> and a “sim/bench first, then hardware” workflow. Detailed roles, demos, and team decks live on my <b><a href="https://joeyleeportfolio.netlify.app/" target="_blank" rel="noopener noreferrer">Physical AI Portfolio</a></b>; game and 3D work is on the <a href="https://joeyjeongwooleeportfolio.netlify.app/" target="_blank" rel="noopener noreferrer">Game Development Portfolio</a>.</span>
+</p>
+
+<h2 id="sec-skills" class="reveal"><span class="ko">핵심 기술</span><span class="en">Core Skills</span></h2>
+<div class="skillgrid reveal">
+  <div class="srow"><div class="k">Robotics · ROS</div><div class="chips"><span>ROS 2 (Jazzy)</span><span>MoveIt</span><span>MuJoCo</span><span>TRAC-IK</span><span>Nav2</span><span>py_trees (BT)</span><span>TF</span><span>URDF</span></div></div>
+  <div class="srow"><div class="k">AI · Vision</div><div class="chips"><span>MediaPipe</span><span>YOLOv8</span><span>ByteTrack</span><span>ReID (OSNet/torchreid)</span><span>InsightFace</span><span>LSTM</span><span>OpenCV</span><span>PyTorch</span><span>TensorFlow/Keras</span></div></div>
+  <div class="srow"><div class="k"><span class="ko">SW · 언어</span><span class="en">SW · Languages</span></div><div class="chips"><span>Python</span><span>TypeScript/JS</span><span>C/C++ (Arduino)</span><span>FastAPI</span><span>WebSocket</span><span>SQLAlchemy/PostgreSQL</span><span>Vue 3</span></div></div>
+  <div class="srow"><div class="k"><span class="ko">3D · 그래픽</span><span class="en">3D · Graphics</span></div><div class="chips"><span>three.js</span><span>Maya</span><span>ZBrush</span><span>Substance Painter</span><span>Substance Designer</span><span>Unreal Engine (Blueprint)</span><span class="ko">하드서피스·환경 아트</span><span class="en">Hard-surface & Environment Art</span></div></div>
+  <div class="srow"><div class="k">Embedded · Tools</div><div class="chips"><span>ESP32</span><span>Raspberry Pi 5</span><span>NCNN</span><span>Git</span><span>Linux</span></div></div>
+  <div class="srow"><div class="k">Languages</div><div class="chips"><span class="ko">한국어 (모국어)</span><span class="en">Korean (native)</span><span class="ko">영어 (업무 가능, 미국 학사)</span><span class="en">English (professional — U.S. degree)</span></div></div>
+</div>
+
+<h2 id="sec-projects" class="reveal"><span class="ko">프로젝트 (Addinedu Physical AI 1기)</span><span class="en">Projects (Addinedu Physical AI, Cohort 1)</span></h2>
+
+<div class="proj reveal">
+  <div class="pmain ko">
+    <div class="ph"><div class="pt">Gesto — LSTM 제스처 인식 인터랙션<span class="tag">딥러닝</span></div><div class="per">2026.01.29 – 2026.02.06</div></div>
+    <div class="one">발표·강의 중 손이 키보드/마우스에 묶이는 문제를 줄이기 위해, 웹캠 <b>MediaPipe→LSTM→pynput</b> 파이프라인으로 PPT·YouTube를 <b>핸즈프리</b> 제어하는 데스크톱 앱을 구현하였습니다. <b>PyQt6 애플리케이션·데이터셋 수집 도구·추론 파이프라인</b>을 담당하였으며, 팀과 함께 8일 만에 제스처 인식 프로토타입을 완성·시연하였습니다 (<a href="https://github.com/addinedu-physicalai-1st/deeplearning-repo-4" target="_blank" rel="noopener noreferrer">deeplearning-repo-4</a>).</div>
+    <ul>
+      <li><b>MediaPipe 21-pt + LSTM</b> 파이프라인을 구축하였고, 트리거·모드별 검출·신뢰도 임계값을 설정하였으며, <b>pynput</b>으로 PPT/YouTube 단축키를 매핑하였습니다.</li>
+      <li><b>PyQt6 UI(약 1,600라인 이상)</b>를 개발하였고, 웹캠·모드·게이지 UI를 포함하며, <b>camera/trigger/detection 워커 스레드</b>로 UI 멈춤 현상을 방지하였습니다.</li>
+      <li>팀과 함께 <b>6,276</b>개의 `.npy` 시퀀스(**30×21×3**)를 수집·부분 학습하였으며, 발표 자료 기준 <b>평균 F1 약 74%</b>(Swipe Left 약 0.89)를 달성하였습니다.</li>
+    </ul>
+    <div class="tech"><b>Tech</b> Python · PyQt6 · MediaPipe · LSTM · OpenCV · pynput</div>
+  </div>
+  <div class="pmain en">
+    <div class="ph"><div class="pt">Gesto — LSTM Gesture-Recognition Interaction<span class="tag">Deep Learning</span></div><div class="per">29 Jan – 6 Feb 2026</div></div>
+    <div class="one">To free presenters from keyboard/mouse during talks, we built a desktop app that runs <b>MediaPipe→LSTM→pynput</b> on a webcam for <b>hands-free</b> PPT/YouTube control. I owned the <b>PyQt6 shell, dataset tooling, and inference pipeline</b>; the team shipped and demoed the gesture prototype in eight days (<a href="https://github.com/addinedu-physicalai-1st/deeplearning-repo-4" target="_blank" rel="noopener noreferrer">deeplearning-repo-4</a>).</div>
+    <ul>
+      <li><b>MediaPipe 21-pt + LSTM</b> pipeline — trigger, per-mode detection, confidence thresholds; <b>pynput</b> maps to PPT/YouTube.</li>
+      <li><b>PyQt6 UI ~1,600+ lines</b> — webcam, modes, gauge; <b>camera/trigger/detection worker threads</b> keep the UI responsive.</li>
+      <li>With the team, collected <b>6,276</b> `.npy` sequences (**30×21×3**) and partial training — deck <b>~74% avg F1</b> (Swipe Left ~0.89).</li>
+    </ul>
+    <div class="tech"><b>Tech</b> Python · PyQt6 · MediaPipe · LSTM · OpenCV · pynput</div>
+  </div>
+  <figure class="pthumb"><img src="resume_assets/gesto.png" alt="Gesto" data-zoom><figcaption>Gesto — Hands-Free Control</figcaption></figure>
+</div>
+<div class="proj reveal">
+  <div class="pmain ko">
+    <div class="ph"><div class="pt">오주의 마법사 — 스마트 주차 IoT<span class="tag">IoT</span></div><div class="per">2026.02.23 – 2026.03.04</div></div>
+    <div class="one">실물 <b>미니 로타리 주차타워</b> 프로토타입 위에서 ESP32-CAM 기반 <b>주차 안내 타워·게이트</b>와 <b>PyQt6 관제실</b>을 구축하였습니다. <b>ESP32 펌웨어(점유 감지·UDP/TCP)</b>와 <b>관제 UI(멀티캠·LPR·게이트 제어)</b>를 담당하였으며, 팀과 네트워크·하드웨어를 연동한 뒤 데모 주간에 <b>번호판 인식·입출차 시나리오</b>까지 end-to-end로 시연하였습니다 (<a href="https://github.com/addinedu-physicalai-1st/iot-repo-2" target="_blank" rel="noopener noreferrer">iot-repo-2</a>).</div>
+    <ul>
+      <li><b>ESP32 주차 안내 펌웨어</b>를 개발하였고, IR 점유 감지, <b>UDP/TCP</b>, <b>33-byte</b> 패킷, keep-alive PING/PONG을 구현하였습니다.</li>
+      <li>데모 주간 <b>PyQt6 관제 UI</b>를 구현하였고, 멀티캠·<b>PaddleOCR LPR</b> 다이얼로그·수동 LPR 오버라이드를 지원하였으며, 팀 발표 자료 기준 번호판 인식률 <b>약 94.3%</b>를 기록하였습니다.</li>
+      <li>로타리 타워 <b>IR 점유 판정</b>, WiFi <b>TCP keep-alive</b>, LCD 피드백과 <b>ESP32-CAM·RFID·서보 게이트</b>를 연결하여 실물 프로토타입에서 입·출차 시나리오를 재현하였습니다.</li>
+    </ul>
+    <div class="tech"><b>Tech</b> ESP32/Arduino(C++) · Python · PyQt6 · TCP/UDP · PaddleOCR · OpenCV</div>
+  </div>
+  <div class="pmain en">
+    <div class="ph"><div class="pt">Wizard of Parking — Smart Parking IoT<span class="tag">IoT</span></div><div class="per">23 Feb – 4 Mar 2026</div></div>
+    <div class="one">On a physical <b>mini rotary parking tower</b>, we built ESP32-CAM guidance towers, gates, and a <b>PyQt6 control room</b>. I owned <b>ESP32 firmware (occupancy + UDP/TCP)</b> and the <b>operator UI (multi-cam, LPR, gate control)</b>; after wiring the network and hardware with the team, we demoed <b>plate read + entry/exit flows</b> end-to-end in the final week (<a href="https://github.com/addinedu-physicalai-1st/iot-repo-2" target="_blank" rel="noopener noreferrer">iot-repo-2</a>).</div>
+    <ul>
+      <li><b>ESP32 parking-guidance firmware</b> — IR occupancy, <b>UDP/TCP</b>, <b>33-byte</b> packets, keep-alive PING/PONG.</li>
+      <li>Final-week <b>PyQt6 operator UI</b> — multi-cam, <b>PaddleOCR LPR</b> dialogs, manual LPR override; team deck <b>~94.3%</b> plate read.</li>
+      <li>Linked tower <b>IR occupancy</b>, WiFi <b>TCP keep-alive</b>, LCD feedback, and <b>ESP32-CAM · RFID · servo gates</b> on the physical prototype for entry/exit scenarios.</li>
+    </ul>
+    <div class="tech"><b>Tech</b> ESP32/Arduino (C++) · Python · PyQt6 · TCP/UDP · PaddleOCR · OpenCV</div>
+  </div>
+  <figure class="pthumb"><img src="resume_assets/parking.jpg" alt="실물 로타리 주차타워 프로토타입 — ESP32·번호판 인식" data-zoom><figcaption><span class="ko">실물 로타리 주차타워 프로토타입 · ESP32-CAM·RFID·서보</span><span class="en">Real rotary parking-tower prototype · ESP32-CAM · RFID · servo</span></figcaption></figure>
+</div>
+<div class="proj reveal">
+  <div class="pmain ko">
+    <div class="ph"><div class="pt">shoppinkki — 스마트 쇼핑 카트 로봇<span class="tag">자율주행</span></div><div class="per">2026.04.03 – 2026.04.14</div></div>
+    <div class="one">마트 <b>Pinky Pro 쇼핑 카트</b>가 Nav2 위에서 <b>고객(Owner)을 추적·따라가며</b> 이동하는 follow 모드에서, <b>YOLOv8→ByteTrack→ReID</b> 기반 <b>Owner 추적·식별 엔진</b>을 담당하였습니다. Raspberry Pi 5에서 <b>실시간 비전·ReID 경량화(NCNN)</b>와 <b>py_trees 행동트리</b>를 연동하여, 혼잡한 매장 환경에서도 카트가 사람을 놓치지 않도록 구현하였습니다 (<a href="https://github.com/addinedu-physicalai-1st/ros-repo-2" target="_blank" rel="noopener noreferrer">ros-repo-2</a>).</div>
+    <ul>
+      <li><b>Owner 실시간 추적 엔진</b>을 구현하였고, YOLOv8 + <b>ByteTrack</b> + CNN ReID와 5프레임 <b>Safe-ID 잠금</b>으로 ReID 연산을 줄여 E2E 지연을 최적화하였습니다.</li>
+      <li><b>ReID 엔진을 재설계</b>하였고, OSNet에서 MobileNetV3 및 색상통계 폴백 구조로 전환하였으며, <b>NCNN 양자화</b>로 Raspberry Pi 5 추론 부하를 경량화하였습니다.</li>
+      <li><b>py_trees 행동트리</b>(추종·탐색), PID 추종, LiDAR 장애물 회피를 튜닝하였고, TRACKING/LOCKED 등 상태 머신을 확장하였습니다.</li>
+    </ul>
+    <div class="tech"><b>Tech</b> ROS 2 Jazzy · PyTorch/torchreid · YOLOv8 · OpenCV · py_trees · Raspberry Pi 5 · NCNN</div>
+  </div>
+  <div class="pmain en">
+    <div class="ph"><div class="pt">shoppinkki — Smart Shopping-Cart Robot<span class="tag">Autonomous Driving</span></div><div class="per">3 Apr – 14 Apr 2026</div></div>
+    <div class="one">For the <b>Pinky Pro</b> mart cart on Nav2, I owned the <b>YOLOv8 → ByteTrack → ReID</b> engine that <b>follows the shopper (Owner)</b> in follow mode. On Raspberry Pi 5 I tuned <b>real-time vision + NCNN-quantized ReID</b> and wired it into <b>py_trees</b> so the cart keeps the person locked even in a busy aisle (<a href="https://github.com/addinedu-physicalai-1st/ros-repo-2" target="_blank" rel="noopener noreferrer">ros-repo-2</a>).</div>
+    <ul>
+      <li>Built the <b>real-time owner-tracking engine</b> — YOLOv8 + <b>ByteTrack</b> + CNN ReID, with a 5-frame <b>Safe-ID lock</b> that skips ReID compute to cut E2E latency.</li>
+      <li><b>Redesigned the ReID engine</b> — OSNet → MobileNetV3 with a color-statistics fallback, plus <b>NCNN quantization</b> to lighten inference on Raspberry Pi 5.</li>
+      <li>Tuned <b>py_trees behavior trees</b> (follow/search) with PID following and LiDAR obstacle avoidance; extended the state machine (TRACKING/LOCKED, etc.).</li>
+    </ul>
+    <div class="tech"><b>Tech</b> ROS 2 Jazzy · PyTorch/torchreid · YOLOv8 · OpenCV · py_trees · Raspberry Pi 5 · NCNN</div>
+  </div>
+  <figure class="pthumb"><img src="resume_assets/shoppinkki.png" alt="Pinky Pro 쇼핑 카트 로봇" data-zoom><figcaption><span class="ko">Pinky Pro 쇼핑 카트 로봇</span><span class="en">Pinky Pro shopping-cart robot</span></figcaption></figure>
+</div>
+<div class="proj reveal">
+  <div class="pmain ko">
+    <div class="ph"><div class="pt">pingdergarten — 교육보조로봇 “EduPing”<span class="tag">Physical AI</span></div><div class="per">2026.04.23 – 2026.06.04</div></div>
+    <div class="one"><b>OpenArm 양팔 로봇</b> 기반 유치원 <b>교육보조 로봇(EduPing)</b> 프로젝트(6인 팀)에서 <b>브라우저 텔레옵·등원/하원·놀이·학부모 포털</b> 모듈을 담당하였습니다. <b>three.js + WebSocket + MoveIt/TRAC-IK</b>로 교사·학부모가 안전하게 로봇과 상호작용할 수 있는 <b>브라우저 UI와 closed-loop 제어</b>를 구현하였으며, <b>MuJoCo 트윈</b>으로 실물 시연 전 안전·동작을 검증하였습니다 (<a href="https://github.com/addinedu-physicalai-1st/physical-ai-repo-2" target="_blank" rel="noopener noreferrer">physical-ai-repo-2</a>).</div>
+    <ul>
+      <li><b>브라우저 텔레옵·등원 하이파이브</b> 기능을 구현하였고, D435 <b>zstd WebSocket → 브라우저 포인트클라우드</b>, three.js URDF + <b>TRAC-IK→FK 잔차</b> closed-loop로 손 빗나감을 <b>약 28cm에서 약 2cm</b>로 줄였습니다.</li>
+      <li><b>MuJoCo 디지털 트윈</b>으로 어깨 침범·접촉 거리·떨림을 자동 측정하여 안전을 검증한 뒤 실물 OpenArm으로 시연하였으며, 왼팔 IK 실패를 <b>미러(대칭) 풀이</b>로 해결하였습니다(오차 1.1cm).</li>
+      <li><b>무궁화 꽃이 피었습니다</b> 게임을 구현하였고, 6단계 상태 머신, 오디오 단일 시계 박자 변주, 다중 얼굴 등록(InsightFace), SAD 기반 움직임 판정 및 YOLO·ByteTrack을 적용하였습니다.</li>
+      <li><b>학부모 포털 일과 보고서</b>를 개발하였고, Vue 3 타임라인과 <b>이중 파싱</b>(JSON→정규식 폴백), LLM(Ollama) ‘골격 고정’ 방식으로 사실 정보는 고정하고 문장만 생성하도록 구성하였습니다.</li>
+    </ul>
+    <div class="tech"><b>Tech</b> ROS 2 Jazzy · MoveIt · MuJoCo · TRAC-IK · three.js · Vue 3 + TypeScript · FastAPI · WebSocket · MediaPipe · D435</div>
+  </div>
+  <div class="pmain en">
+    <div class="ph"><div class="pt">pingdergarten — “EduPing” Education Assistant Robot<span class="tag">Physical AI</span></div><div class="per">23 Apr – 4 Jun 2026</div></div>
+    <div class="one">Kindergarten assistant robot on a bimanual <b>OpenArm</b> (team of 6) — I owned <b>browser teleop, attendance/play flows, and the parent portal</b>. Built <b>three.js + WebSocket + MoveIt/TRAC-IK</b> browser UX with <b>closed-loop control</b> for teachers and parents, and used a <b>MuJoCo twin</b> to validate safety and motion before hardware demos (<a href="https://github.com/addinedu-physicalai-1st/physical-ai-repo-2" target="_blank" rel="noopener noreferrer">physical-ai-repo-2</a>).</div>
+    <ul>
+      <li><b>Browser teleop &amp; depth high-five</b> — D435 <b>zstd WebSocket → browser point cloud</b>, three.js URDF + <b>TRAC-IK→FK residual</b> closed loop; miss distance from <b>~28 cm to ~2 cm</b>.</li>
+      <li>Built a <b>MuJoCo digital twin</b> that auto-measures shoulder-ceiling violations, contact distance, and jitter to validate safety before the real OpenArm demo; solved an unsolvable left-arm IK via a <b>mirror-solve</b> (1.1 cm error).</li>
+      <li><b>Red-light/green-light game</b> — 6-state machine, single-audio-clock tempo variation, multi-face registration (InsightFace), SAD-based motion judging + YOLO/ByteTrack.</li>
+      <li><b>Parent portal daily report</b> — Vue 3 timeline with <b>dual parsing</b> (JSON → regex fallback) and an LLM (Ollama) “skeleton-lock” generation that fixes facts and only writes the prose.</li>
+    </ul>
+    <div class="tech"><b>Tech</b> ROS 2 Jazzy · MoveIt · MuJoCo · TRAC-IK · three.js · Vue 3 + TypeScript · FastAPI · WebSocket · MediaPipe · D435</div>
+  </div>
+  <figure class="pthumb"><img src="resume_assets/eduping_sim.jpg" alt="EduPing MuJoCo 디지털 트윈 — 파란/빨간 공" data-zoom><figcaption><span class="ko">MuJoCo 트윈 · 🔵파란 공→🔴빨간 공 수렴 (closed-loop)</span><span class="en">MuJoCo twin · 🔵blue→🔴red ball convergence (closed-loop)</span></figcaption></figure>
+</div>
+<h2 id="sec-education" class="reveal"><span class="ko">학력 · 교육</span><span class="en">Education</span></h2>
+<div class="two reveal">
+  <div class="entry">
+    <div class="et">University of Utah</div>
+    <div class="ed"><span class="ko">2024년 12월 13일 졸업</span><span class="en">Dec 13, 2024</span></div>
+    <div style="font-size:13px;color:var(--sub)"><span class="ko">B.S. in Games(게임학사) · College of Architecture + Planning · Magna Cum Laude · <a href="resume_assets/이정우_Diploma.pdf" target="_blank" rel="noopener noreferrer">졸업증명서(PDF)</a></span><span class="en">B.S. in Games · College of Architecture + Planning · Magna Cum Laude · <a href="resume_assets/이정우_Diploma.pdf" target="_blank" rel="noopener noreferrer">Diploma (PDF)</a></span></div>
+    <div style="font-size:13px;color:var(--sub);margin-top:6px"><span class="ko">게임 디자인·3D·실시간 렌더링·팀 프로젝트 중심 커리큘럼을 이수하였으며, 이후 Physical AI·로봇 소프트웨어 구현에 필요한 <b>공간 감각·UI·통합 역량</b>의 기반이 되었습니다.</span><span class="en">Coursework in game design, 3D, real-time graphics, and team-based shipping — the foundation for my <b>spatial sense, UI work, and integration</b> in robotics today.</span></div>
+  </div>
+  <div class="entry">
+    <div class="et">Addinedu — Physical AI <span class="ko">부트캠프 1기</span><span class="en">Bootcamp, Cohort 1</span></div>
+    <div class="ed"><span class="ko">2026.01 – 2026.06</span><span class="en">Jan – Jun 2026</span></div>
+    <div style="font-size:13px;color:var(--sub)"><span class="ko">IoT · 딥러닝 · 자율주행 · Physical AI 분야 팀 프로젝트 4건 수료</span><span class="en">IoT · Deep Learning · Autonomous Driving · Physical AI (4 team projects)</span></div>
+    <div style="font-size:13px;color:var(--sub);margin-top:6px"><span class="ko">약 1~6주 주기로 <b>딥러닝(Gesto) → IoT(주차) → ROS 2 자율주행(ShopPinkki) → Physical AI 캡스톤(EduPing)</b> 순으로 난이도를 높여 가며, <b>인식·임베디드·내비게이션·양팔 로봇 통합</b>을 단계적으로 경험하였습니다.</span><span class="en">Four ~1–6 week team sprints — <b>DL (Gesto) → IoT parking → ROS 2 follow (ShopPinkki) → Physical AI capstone (EduPing)</b> — stepping through perception, embedded, navigation, and bimanual integration.</span></div>
+  </div>
+</div>
+
+<h2 id="sec-about" class="reveal"><span class="ko">지원 동기 · 관심사</span><span class="en">Motivation &amp; Interests</span></h2>
+<div class="pers reveal">
+  <p>
+    <span class="ko"><span class="lab">지원 동기 · </span> 게임·3D 제작에서는 <b>화면에 보이는 완성도</b>가 곧 결과였지만, 로봇 프로젝트를 진행하며 <b>MuJoCo 트윈·센서·제어가 맞물릴 때 비로소 동작이 검증된다</b>는 점을 체감하였습니다. 3D·게임에서 길러 온 공간 감각을 로봇·AI에 적용하여, <b>인식부터 제어·UI까지 직접 연결하는 구현</b>에 기여하고자 합니다. Gesto의 <b>PyQt 워커 스레드 분리</b>나 EduPing의 <b>closed-loop 시뮬 수렴</b>처럼, <b>마지막 통합·디버깅을 끝까지 책임지는 과정</b>에서 가장 큰 보람을 느낍니다.</span>
+    <span class="en"><span class="lab">Motivation — </span> In games and 3D, <b>what you see on screen was the product</b>; in robotics I learned that motion is only real when <b>MuJoCo twins, sensors, and control actually line up</b>. I want to apply that spatial intuition to <b>builds that connect perception, control, and UI</b>. Work like <b>splitting PyQt worker threads in Gesto</b> or <b>closing the loop in EduPing’s sim</b> — the last-mile integration — is where I feel most engaged.</span>
+  </p>
+  <p>
+    <span class="ko"><span class="lab">롤모델 · </span> <b>Jonny Kim(조니 김)</b> — 미 해군 SEAL → 하버드 의대(MD) → NASA 우주비행사로, 서로 다른 분야마다 최고 수준에 도달하신 분입니다. 한 분야에 머무르지 않는 <b>집요함</b>과, 한국계로서 끊임없이 한계를 넓혀 오신 태도를 존경하며 롤모델로 삼고 있습니다. 3D·게임에서 로봇·AI로 역량을 확장해 나가는 저의 길에 큰 자극이 되고 있습니다.</span>
+    <span class="en"><span class="lab">Role model — </span> <b>Jonny Kim</b> — U.S. Navy SEAL → Harvard MD → NASA astronaut — who reached the top of radically different, demanding fields. I admire his relentlessness and the way he, as a Korean American, keeps pushing his own limits; it strongly motivates my own path from 3D/games into robotics and AI.</span>
+  </p>
+  <p>
+    <span class="ko"><span class="lab">취미 · </span> <b>Maya·ZBrush</b>로 하드서피스·환경을 모델링하는 일은 취미를 넘어 <b>URDF·three.js 시각화</b>에도 이어집니다. 작업물은 <a href="https://joeyjeongwooleeportfolio.netlify.app/" target="_blank" rel="noopener noreferrer">Game Development Portfolio</a>와 <a href="https://joeyleeportfolio.netlify.app/" target="_blank" rel="noopener noreferrer">Physical AI Portfolio</a>에 나누어 정리하였습니다.</span>
+    <span class="en"><span class="lab">Interests — </span> <b>Maya &amp; ZBrush</b> hard-surface and environment work feeds my <b>URDF and three.js</b> visuals — split across the <a href="https://joeyjeongwooleeportfolio.netlify.app/" target="_blank" rel="noopener noreferrer">Game Development Portfolio</a> and <a href="https://joeyleeportfolio.netlify.app/" target="_blank" rel="noopener noreferrer">Physical AI Portfolio</a>.</span>
+  </p>
+</div>
+
+</div>
+
+<div class="lb no-print" id="lb" hidden><img id="lbimg" src="" alt=""><div class="hint"><span class="ko">클릭하거나 Esc 키로 닫을 수 있습니다</span><span class="en">Click or Esc to close</span></div></div>
+
+<script>
+(function(){
+  var body=document.body, btn=document.getElementById('langbtn');
+  function setLang(l){
+    body.classList.remove('lang-ko','lang-en'); body.classList.add('lang-'+l);
+    document.documentElement.lang=l; btn.textContent=(l==='ko')?'English':'한국어';
+    try{ localStorage.setItem('resumeLang',l); }catch(e){}
+  }
+  btn.addEventListener('click', function(){ setLang(body.classList.contains('lang-ko')?'en':'ko'); });
+  var saved; try{ saved=localStorage.getItem('resumeLang'); }catch(e){}
+  setLang(saved==='en'?'en':'ko');
+
+  // lightbox
+  var lb=document.getElementById('lb'), lbimg=document.getElementById('lbimg');
+  function openLb(src,alt){ lbimg.src=src; lbimg.alt=alt||''; lb.hidden=false; }
+  function closeLb(){ lb.hidden=true; lbimg.src=''; }
+  document.querySelectorAll('[data-zoom]').forEach(function(el){
+    el.addEventListener('click', function(){ openLb(this.getAttribute('src')||this.src, this.alt); });
+  });
+  lb.addEventListener('click', closeLb);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeLb(); });
+
+  // scroll reveal
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }); },{threshold:.06});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+    // side-index scrollspy (scroll-based — robust for short sections at page bottom)
+    var ids=['sec-summary','sec-skills','sec-projects','sec-education','sec-about'];
+    var secs=ids.map(function(id){ return {id:id, el:document.getElementById(id)}; }).filter(function(s){ return s.el; });
+    function setActive(id){ document.querySelectorAll('.snav').forEach(function(a){ a.classList.toggle('active', a.getAttribute('href').slice(1)===id); }); }
+    // clicking a dot locks it active until the user scrolls with real intent
+    // (otherwise the page-bottom rule could flip e.g. 학력 → 자기소개 when both sit at the bottom)
+    var locked=null;
+    document.querySelectorAll('.snav').forEach(function(a){
+      a.addEventListener('click', function(){ locked=this.getAttribute('href').slice(1); setActive(locked); });
+    });
+    ['wheel','touchmove','keydown'].forEach(function(ev){
+      window.addEventListener(ev, function(){ locked=null; }, {passive:true});
+    });
+    function spy(){
+      if(locked){ setActive(locked); return; }
+      var line=Math.max(110, window.innerHeight*0.28), cur=secs[0].id;
+      for(var i=0;i<secs.length;i++){ if(secs[i].el.getBoundingClientRect().top-1<=line) cur=secs[i].id; }
+      if(window.innerHeight+window.scrollY >= document.documentElement.scrollHeight-4) cur=secs[secs.length-1].id;
+      setActive(cur);
+    }
+    window.addEventListener('scroll', spy, {passive:true});
+    window.addEventListener('resize', spy);
+    spy();
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>
