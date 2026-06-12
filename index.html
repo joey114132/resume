@@ -254,9 +254,9 @@
     position:fixed;left:0;top:0;z-index:40;
     width:46px;height:46px;
     pointer-events:none;
-    transform:translate(-50%,-50%);
+    transform:translate3d(-9999px,-9999px,0) translate(-50%,-50%);
     opacity:0;visibility:hidden;
-    will-change:left,top;
+    will-change:transform;
   }
   .cursor-robot.is-on{opacity:1;visibility:visible;}
   .cursor-robot svg{display:block;width:100%;height:100%;filter:drop-shadow(0 3px 6px rgba(26,26,46,.18));}
@@ -600,7 +600,7 @@
 </script>
 <script>
 (function(){
-  // 데스크톱·정밀 포인터·모션 허용일 때만 마우스 실시간 추적
+  // 데스크톱·정밀 포인터·모션 허용일 때만 커서 1:1 동기 (lerp 없음)
   var robot=document.getElementById('cursor-robot');
   if(!robot) return;
   var mqDesktop=window.matchMedia('(min-width:1181px) and (hover:hover) and (pointer:fine)');
@@ -609,26 +609,16 @@
   if(!enabled()) return;
 
   var OFFSET_X=16, OFFSET_Y=18; // 커서 끝을 가리지 않도록 살짝 오른쪽·아래
-  var targetX=window.innerWidth*0.5, targetY=window.innerHeight*0.5;
-  var posX=targetX, posY=targetY;
-  var LERP=0.82; // 높은 lerp로 커서에 거의 붙어 따라감
+
+  function placeRobot(x, y){
+    robot.style.transform='translate3d('+(x+OFFSET_X)+'px,'+(y+OFFSET_Y)+'px,0) translate(-50%,-50%)';
+  }
 
   robot.classList.add('is-on');
   window.addEventListener('mousemove', function(e){
-    targetX=e.clientX+OFFSET_X;
-    targetY=e.clientY+OFFSET_Y;
+    if(!enabled()) return;
+    placeRobot(e.clientX, e.clientY);
   }, {passive:true});
-
-  function tick(){
-    if(enabled()){
-      posX+=(targetX-posX)*LERP;
-      posY+=(targetY-posY)*LERP;
-      robot.style.left=posX+'px';
-      robot.style.top=posY+'px';
-    }
-    requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
 
   function onMq(){ robot.classList.toggle('is-on', enabled()); }
   mqDesktop.addEventListener('change', onMq);
