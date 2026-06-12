@@ -125,9 +125,18 @@
   }
   h2::before,h2::after{display:none;}
   p{margin:8px 0;}
-  .summary{
+  /* 자기소개 — 프로젝트 카드와 동일한 박스 */
+  .profile-box{
+    margin:0 0 4px;padding:18px 20px 20px 22px;
+    background:var(--sheet);border:1px solid var(--line);border-radius:4px;
+    border-left:3px solid var(--acbg);break-inside:avoid;
+  }
+  @media (hover:hover){
+    .profile-box:hover{border-left-color:var(--ac2);box-shadow:0 2px 12px rgba(26,26,46,.06);}
+  }
+  .profile-box .summary{
+    margin:0;max-width:none;
     font-size:14.5px;color:var(--sub);line-height:1.68;
-    max-width:72ch;
   }
   .research-list{
     margin:4px 0 0;padding-left:1.2rem;max-width:72ch;
@@ -213,16 +222,15 @@
   li{margin:6px 0;font-size:14px;color:var(--sub);line-height:1.62;}
   li::marker{color:var(--ac2);}
   li b{color:var(--ink);font-weight:600;}
-  /* 프로젝트 하단 Tech — Core Skills와 동일한 칩 박스 */
+  /* 프로젝트 하단 Tech — Core Skills(.srow)와 동일한 2열 그리드로 칩 줄바꿈 정렬 */
   .proj .tech{
-    display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px 10px;
+    display:grid;grid-template-columns:140px 1fr;gap:14px 20px;align-items:start;
     margin-top:12px;padding-top:10px;border-top:1px solid var(--line);clear:both;
   }
   .proj .tech .tech-label{
     font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-    color:var(--ac);padding-top:4px;flex:none;line-height:1.35;
+    color:var(--ac);padding-top:4px;line-height:1.35;
   }
-  .proj .tech .chips{flex:1 1 12rem;}
   .entry{margin:10px 0;break-inside:avoid;}
   .entry .et{font-weight:700;font-size:15px;color:var(--ink);}
   .entry .ed{font-size:12.5px;color:var(--mut);font-weight:500;margin:2px 0 6px;}
@@ -241,6 +249,21 @@
   .lb[hidden]{display:none;}
   .lb img{max-width:92vw;max-height:92vh;border-radius:12px;box-shadow:0 24px 70px rgba(0,0,0,.6);}
   .lb .hint{position:fixed;bottom:18px;left:0;right:0;text-align:center;color:#9fb0c6;font-size:12px;pointer-events:none;}
+  /* 커서 따라다니는 귀여운 로봇 이스터에그 — 데스크톱·정밀 포인터만 */
+  .cursor-robot{
+    position:fixed;left:0;top:0;z-index:40;
+    width:46px;height:46px;
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    opacity:0;visibility:hidden;
+    will-change:left,top;
+  }
+  .cursor-robot.is-on{opacity:1;visibility:visible;}
+  .cursor-robot svg{display:block;width:100%;height:100%;filter:drop-shadow(0 3px 6px rgba(26,26,46,.18));}
+  @keyframes robot-bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-2px);}}
+  .cursor-robot .robot-bob{animation:robot-bob 2.2s ease-in-out infinite;}
+  @media (prefers-reduced-motion: reduce){ .cursor-robot{display:none!important;} }
+  @media (max-width:1180px),(hover:none),(pointer:coarse){ .cursor-robot{display:none!important;} }
   /* reveal */
   .js .reveal{opacity:0;transform:translateY(12px);transition:opacity .55s ease, transform .55s ease;}
   .js .reveal.in{opacity:1;transform:none;}
@@ -254,6 +277,7 @@
     .proj::before{left:-28px;width:20px;height:20px;font-size:10px;top:18px;}
     .pthumb{float:none;width:100%;max-width:300px;margin:0 auto 14px;}
     .srow{grid-template-columns:1fr;gap:6px;}
+    .proj .tech{grid-template-columns:1fr;gap:6px;}
     .two{grid-template-columns:1fr;}
     .toolbar{top:10px;right:10px;}
   }
@@ -266,6 +290,7 @@
     .proj,.entry,h2{break-inside:avoid;transform:none!important;box-shadow:none!important;}
     .timeline::before{background:#94a3b8;}
     .proj{border:1px solid #ccc;border-left:2px solid var(--ac);margin-bottom:14px;padding:12px 14px;}
+    .profile-box{border:1px solid #ccc;border-left:2px solid var(--ac);margin-bottom:14px;padding:12px 14px;}
     .proj::before{border-color:#fff;box-shadow:none;}
     .two .entry{background:#fff;border:1px solid #ddd;}
     .summary,.pers{max-width:none;}
@@ -315,10 +340,12 @@
 </header>
 
 <h2 id="sec-summary" class="reveal"><span class="ko">자기소개</span><span class="en">Profile</span></h2>
-<p class="summary reveal">
+<div class="profile-box reveal">
+<p class="summary">
   <span class="ko">Utah 대학교 <b>Games 학사(GPA 3.98/4.00, 2024)</b>를 마친 뒤 <b>Physical AI·로보틱스</b>로 영역을 확장해 온 엔지니어입니다. 게임·3D에서 쌓은 <b>공간 감각과 실시간 렌더링 경험</b>을 <b>MuJoCo 디지털 트윈·three.js·비전(MediaPipe·YOLO)</b> 기반의 물리 시스템 구현에 연결하고 있습니다. Addinedu Physical AI 1기에서 <b>Gesto → 주차 IoT → ShopPinkki → pingdergarten(EduPing)</b> 네 차례의 팀 프로젝트를 수행하였으며, 매번 <b>데스크톱/브라우저 UI·비전 파이프라인·로봇 연동</b> 구간을 맡아 팀 통합을 이끌었습니다. <b>센서·비전 입력을 제어·UI까지 실시간으로 잇는 closed-loop 구현</b>과 <b>시뮬레이션에서 검증한 뒤 실물 하드웨어로 올리는 sim-to-real</b> 워크플로에 강점을 보유하고 있습니다. <b>비전 기반 자율 시스템·항공/필드 로보틱스 연구 문화</b>에서 인턴십·협업 기회를 찾고 있습니다. 상세 역할·데모·팀 발표 자료는 <b><a href="https://joeyleeportfolio.netlify.app/" target="_blank" rel="noopener noreferrer">Physical AI Portfolio</a></b>에 정리하였고, 게임·3D 작업은 <a href="https://joeyjeongwooleeportfolio.netlify.app/" target="_blank" rel="noopener noreferrer">Game Development Portfolio</a>에서 확인하실 수 있습니다.</span>
   <span class="en">After a <b>B.S. in Games (GPA 3.98/4.00, Utah, 2024)</b>, I expanded into <b>Physical AI and robotics</b>. I connect spatial intuition and <b>real-time 3D</b> from games to systems that <b>perceive and act in the physical world</b> — <b>MuJoCo digital twins</b>, <b>browser 3D (three.js)</b>, and <b>vision (MediaPipe, YOLO)</b>. In Addinedu Physical AI cohort 1 I shipped four team projects — <b>Gesto → parking IoT → ShopPinkki → pingdergarten (EduPing)</b> — each time owning the <b>desktop/browser UI, vision pipeline, and robot integration</b> layer for the team. I’m strongest at <b>closed-loop builds that tie sensing and vision to control and UI in real time</b> and a <b>sim-to-real workflow</b> — validate in simulation or bench, then bring behavior onto hardware. I’m seeking <b>research internships</b> in <b>vision-based autonomous systems</b> and aerial/field robotics research culture. Detailed roles, demos, and team decks live on my <b><a href="https://joeyleeportfolio.netlify.app/" target="_blank" rel="noopener noreferrer">Physical AI Portfolio</a></b>; game and 3D work is on the <a href="https://joeyjeongwooleeportfolio.netlify.app/" target="_blank" rel="noopener noreferrer">Game Development Portfolio</a>.</span>
 </p>
+</div>
 
 <h2 id="sec-skills" class="reveal"><span class="ko">핵심 기술</span><span class="en">Core Skills</span></h2>
 <div class="skillgrid reveal">
@@ -481,6 +508,26 @@
 
 <div class="lb no-print" id="lb" hidden><img id="lbimg" src="" alt=""><div class="hint"><span class="ko">클릭하거나 Esc 키로 닫을 수 있습니다</span><span class="en">Click or Esc to close</span></div></div>
 
+<div class="cursor-robot no-print" id="cursor-robot" aria-hidden="true">
+  <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g class="robot-bob">
+      <line x1="24" y1="8" x2="24" y2="4" stroke="#64748b" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="24" cy="3" r="2" fill="#e94560"/>
+      <rect x="14" y="8" width="20" height="16" rx="5" fill="#eef2f7" stroke="#1e3a5f" stroke-width="1.5"/>
+      <circle cx="19" cy="16" r="2.5" fill="#1e3a5f"/>
+      <circle cx="29" cy="16" r="2.5" fill="#1e3a5f"/>
+      <circle cx="19.8" cy="15.2" r=".8" fill="#fff"/>
+      <circle cx="29.8" cy="15.2" r=".8" fill="#fff"/>
+      <rect x="16" y="26" width="16" height="12" rx="3" fill="#1e3a5f"/>
+      <rect x="20" y="30" width="8" height="3" rx="1" fill="#e94560" opacity=".7"/>
+      <circle cx="19" cy="40" r="3" fill="#64748b" stroke="#475569" stroke-width="1"/>
+      <circle cx="29" cy="40" r="3" fill="#64748b" stroke="#475569" stroke-width="1"/>
+      <circle cx="19" cy="40" r="1" fill="#cbd5e1"/>
+      <circle cx="29" cy="40" r="1" fill="#cbd5e1"/>
+    </g>
+  </svg>
+</div>
+
 <script>
 (function(){
   var body=document.body, btn=document.getElementById('langbtn');
@@ -549,6 +596,43 @@
   } else {
     document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
   }
+})();
+</script>
+<script>
+(function(){
+  // 데스크톱·정밀 포인터·모션 허용일 때만 마우스 실시간 추적
+  var robot=document.getElementById('cursor-robot');
+  if(!robot) return;
+  var mqDesktop=window.matchMedia('(min-width:1181px) and (hover:hover) and (pointer:fine)');
+  var mqMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+  function enabled(){ return mqDesktop.matches&&!mqMotion.matches; }
+  if(!enabled()) return;
+
+  var OFFSET_X=16, OFFSET_Y=18; // 커서 끝을 가리지 않도록 살짝 오른쪽·아래
+  var targetX=window.innerWidth*0.5, targetY=window.innerHeight*0.5;
+  var posX=targetX, posY=targetY;
+  var LERP=0.82; // 높은 lerp로 커서에 거의 붙어 따라감
+
+  robot.classList.add('is-on');
+  window.addEventListener('mousemove', function(e){
+    targetX=e.clientX+OFFSET_X;
+    targetY=e.clientY+OFFSET_Y;
+  }, {passive:true});
+
+  function tick(){
+    if(enabled()){
+      posX+=(targetX-posX)*LERP;
+      posY+=(targetY-posY)*LERP;
+      robot.style.left=posX+'px';
+      robot.style.top=posY+'px';
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  function onMq(){ robot.classList.toggle('is-on', enabled()); }
+  mqDesktop.addEventListener('change', onMq);
+  mqMotion.addEventListener('change', onMq);
 })();
 </script>
 </body>
